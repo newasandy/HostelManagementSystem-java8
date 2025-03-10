@@ -7,11 +7,10 @@ import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-public class TestUsersService {
+public class TestAuthenticationService {
 
     private UserDAO mockUserDAO;
     private AuthenticationService mockAuthenticationService;
