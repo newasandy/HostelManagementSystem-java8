@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: TestUserService
+Test set: TestRoomService
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.653 s -- in TestUserService
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.642 s -- in TestRoomService
