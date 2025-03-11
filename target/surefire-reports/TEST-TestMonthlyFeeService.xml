@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TestAuthenticationService" time="0.241" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TestMonthlyFeeService" time="1.262" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="gnome"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -59,8 +59,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="loginUser" classname="TestAuthenticationService" time="0.24">
-    <system-out><![CDATA[Hi, null Welcome Back
-]]></system-out>
-  </testcase>
+  <testcase name="assignFeeFailed" classname="TestMonthlyFeeService" time="0.804"/>
+  <testcase name="payFee" classname="TestMonthlyFeeService" time="0.224"/>
+  <testcase name="assignFee" classname="TestMonthlyFeeService" time="0.222"/>
 </testsuite>

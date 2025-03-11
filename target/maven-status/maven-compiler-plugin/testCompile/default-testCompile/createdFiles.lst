@@ -1,3 +1,4 @@
 TestRoomService.class
 TestUserService.class
+TestMonthlyFeeService.class
 TestAuthenticationService.class
