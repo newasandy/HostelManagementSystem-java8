@@ -37,13 +37,6 @@ public class UsersService {
         return userDAO.getOnlyStudent();
     }
 
-    public Address getUserDetailByRowNumber(int rowNumber){
-        List<Address> users = addressDAOImp.getAll();
-        if (rowNumber < 1 || rowNumber > users.size()){
-            System.out.println("Invalid Row Number");
-        }
-        return users.get(rowNumber-1);
-    }
 
     public List<Users> getAllUser(){
         return userDAO.getAll();

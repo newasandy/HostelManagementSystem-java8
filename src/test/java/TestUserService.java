@@ -37,4 +37,18 @@ public class TestUserService {
         assertTrue(statusMessageModel.isStatus());
         assertEquals("User Register Successfully", statusMessageModel.getMessage());
     }
+
+    @Test
+    public void regExixtingUser(){
+        Users regUser = new Users();
+        regUser.setFullName("test2");
+        regUser.setEmail("test@gmail.com");
+        regUser.setRoles("testRoles");
+        regUser.setPasswords(PasswordUtil.getHashPassword("testPass"));
+        when(mockUserDAO.findByEmail("test@gmail.com")).thenReturn(regUser);
+        StatusMessageModel statusMessageModel = mockUsersService.registerNewStudent(regUser);
+
+        assertFalse(statusMessageModel.isStatus());
+        assertEquals("User Already Exist",statusMessageModel.getMessage());
+    }
 }
