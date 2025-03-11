@@ -51,4 +51,63 @@ public class TestUserService {
         assertFalse(statusMessageModel.isStatus());
         assertEquals("User Already Exist",statusMessageModel.getMessage());
     }
+
+    @Test
+    public void updateUserButNotChangeEmail(){
+        Users regUser = new Users();
+        regUser.setFullName("test2");
+        regUser.setEmail("test@gmail.com");
+        regUser.setRoles("testRoles");
+        regUser.setPasswords(PasswordUtil.getHashPassword("testPass"));
+        when(mockUserDAO.getById(regUser.getId())).thenReturn(regUser);
+        when(mockUserDAO.update(regUser)).thenReturn(true);
+        when(mockAddressDAOImp.update(regUser.getAddress())).thenReturn(true);
+        StatusMessageModel statusMessageModel = mockUsersService.updateUserDetails(regUser);
+
+        assertTrue(statusMessageModel.isStatus());
+        assertEquals("User Details Update Successfully",statusMessageModel.getMessage());
+    }
+
+    @Test
+    public void updateUserWhenEmailNotSame(){
+        Users regUser2 = new Users();
+        regUser2.setFullName("test2");
+        regUser2.setEmail("test2@gmail.com");
+        regUser2.setRoles("test2Roles");
+        regUser2.setPasswords(PasswordUtil.getHashPassword("test2Pass"));
+        Users regUser = new Users();
+        regUser.setFullName("test1");
+        regUser.setEmail("test@gmail.com");
+        regUser.setRoles("testRoles");
+        regUser.setPasswords(PasswordUtil.getHashPassword("testPass"));
+        when(mockUserDAO.getById(regUser.getId())).thenReturn(regUser2);
+        when(mockUserDAO.findByEmail(regUser.getEmail())).thenReturn(null);
+        when(mockUserDAO.update(regUser)).thenReturn(true);
+        when(mockAddressDAOImp.update(regUser.getAddress())).thenReturn(true);
+        StatusMessageModel statusMessageModel = mockUsersService.updateUserDetails(regUser);
+
+        assertTrue(statusMessageModel.isStatus());
+        assertEquals("User Details Update Successfully",statusMessageModel.getMessage());
+    }
+
+    @Test
+    public void updateUserAlreadyExistEmail(){
+        Users regUser2 = new Users();
+        regUser2.setFullName("test2");
+        regUser2.setEmail("test2@gmail.com");
+        regUser2.setRoles("test2Roles");
+        regUser2.setPasswords(PasswordUtil.getHashPassword("test2Pass"));
+        Users regUser = new Users();
+        regUser.setFullName("test1");
+        regUser.setEmail("test@gmail.com");
+        regUser.setRoles("testRoles");
+        regUser.setPasswords(PasswordUtil.getHashPassword("testPass"));
+        when(mockUserDAO.getById(regUser.getId())).thenReturn(regUser2);
+        when(mockUserDAO.findByEmail(regUser.getEmail())).thenReturn(regUser2);
+
+        StatusMessageModel statusMessageModel = mockUsersService.updateUserDetails(regUser);
+
+        assertFalse(statusMessageModel.isStatus());
+        assertEquals("!! User Already Exist",statusMessageModel.getMessage());
+    }
 }
